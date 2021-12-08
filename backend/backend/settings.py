@@ -10,13 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from pathlib import Path 
+from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#This is path of project it self (USE IT IF U WANT TO ACCESS SMT FROM OUTSIDE OF DJANGO Project)
+# This is path of project it self (USE IT IF U WANT TO ACCESS SMT FROM OUTSIDE OF DJANGO Project)
 TRUE_ROOT = Path(__file__).resolve().parent.parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -40,6 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'CV_builder',
+    'ral',
+    'recruiter_interface',
+    'roadmap_system',
+    'student_interface',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +64,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(TRUE_ROOT,"frontend/build/")
+            os.path.join(TRUE_ROOT, "frontend/build/")
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -79,11 +84,29 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+
+# Changed to Postgres database from sqlite
+# Install postgres
+# createdb insert_title
+# change user, password in settings
 DATABASES = {
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'insert_title',
+
+        'USER': 'postgres',
+
+        'PASSWORD': '1234',
+
+        'HOST': '127.0.0.1',
+
+        'PORT': '5432',
+
     }
+
 }
 
 
@@ -123,7 +146,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(TRUE_ROOT,'frontend/build/static'),
+    os.path.join(TRUE_ROOT, 'frontend/build/static'),
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
