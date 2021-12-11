@@ -198,4 +198,5 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#TODO remove this shit and make better one
 CORS_ALLOW_ALL_ORIGINS = True
