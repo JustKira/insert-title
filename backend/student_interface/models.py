@@ -1,17 +1,21 @@
 from django.db import models
-
+from django.db.models.deletion import CASCADE
+from django.contrib.auth.models import User
 # Create your models here.
 
 
-class Student(models.Model):
-    first_name = models.TextField()
-    middle_name = models.TextField()
-    last_name = models.TextField()
+class Student(models.Model): 
+    #user = models.ForeignKey(User,on_delete=CASCADE)
+
+    #first_name = models.TextField()
+    #middle_name = models.TextField()
+    #last_name = models.TextField()
+    #email = models.EmailField(unique=True)
+
+    bio = models.TextField()
     education = models.TextField()
     phone_number = models.TextField()
     birthdate = models.DateTimeField()
-    email = models.EmailField(unique=True)
-    bio = models.TextField()
 
     # Might be useful in categorization
     undergraduate_year = models.IntegerField()

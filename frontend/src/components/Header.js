@@ -14,7 +14,7 @@ const Header = () => {
             {user ? (
                 <p onClick={logoutUser}>Logout</p>
             ):(
-                <Link to="Login/"> Login</Link>
+                <Link to="/Login"> Login</Link>
             )}
                        
             {user && <p>Hello {user.username}</p>}

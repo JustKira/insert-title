@@ -7,6 +7,7 @@ import { AuthProvider } from './context/ral/AuthContext'
 
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/ral/LoginPage'
+import RegisterPage from './pages/ral/RegisterPage'
 import Header from './components/Header'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Header/>
         <Routes>
           <Route element={<LoginPage/>} path="/login" />
+          <Route element={<RegisterPage/>} path="/Register" />
           <Route element={<ProtectedeRoute/>}>
             <Route element={<HomePage/>} path="/" exact/>
           </Route>

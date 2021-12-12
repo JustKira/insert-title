@@ -35,7 +35,21 @@ export const AuthProvider = ({children}) => {
         }else{
             alert('Somthing went wronge')
         }
-     }
+    }
+
+    let registerUser = async (e) =>{
+        e.preventDefault()
+        console.log(e)
+        let response = await fetch('http://127.0.0.1:8000/api/user-create',{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({'username':e.target.username.value,'email':e.target.email.value,'password':e.target.password.value,'password2':e.target.password.value})
+        })
+        console.log(response.data)
+    }
+
 
     let logoutUser = () => {
         setAuthTokens(null)
@@ -69,6 +83,8 @@ export const AuthProvider = ({children}) => {
 
     let contextData={
         user:user,
+        authTokens:authTokens,
+        registerUser:registerUser,
         logoutUser:logoutUser,
         loginUser:loginUser,
         
@@ -94,7 +110,7 @@ export const AuthProvider = ({children}) => {
 
     return(
         <AuthContext.Provider value={contextData}>
-            {loading ? null : children}
+            {children}
         </AuthContext.Provider>
     )
 }
