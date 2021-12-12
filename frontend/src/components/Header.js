@@ -4,7 +4,7 @@ import AuthContext from '../context/ral/AuthContext';
 
 const Header = () => {
 
-    let {user} = useContext(AuthContext)
+    let {user,logoutUser} = useContext(AuthContext)
 
     return (
         <div>
@@ -12,7 +12,7 @@ const Header = () => {
             <span> | </span>
 
             {user ? (
-                <p>logout</p>
+                <p onClick={logoutUser}>Logout</p>
             ):(
                 <Link to="Login/"> Login</Link>
             )}
