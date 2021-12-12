@@ -1,7 +1,9 @@
 import "./App.css"
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import PrivateRoute from './utils/PrivateRoute';
+import ProtectedeRoute from './utils/ProtectedeRoute';
+
+import { AuthProvider } from './context/ral/AuthContext'
 
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/ral/LoginPage'
@@ -11,12 +13,16 @@ function App() {
   return (
     <div className="App">
       <Router> 
+        <AuthProvider>        
         <Header/>
         <Routes>
-          <Route element={<HomePage/>} path="/"  />
           <Route element={<LoginPage/>} path="/login" />
+          <Route element={<ProtectedeRoute/>}>
+            <Route element={<HomePage/>} path="/" exact/>
+          </Route>
         </Routes>
-      </Router>
+        </AuthProvider>
+      </Router> 
     </div>
   );
 }
