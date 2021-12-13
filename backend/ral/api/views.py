@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
-from .serializers import UserSerializer
+from .serializers import RegisterSerializer, UserSerializer
 from django.contrib.auth.models import User
 
 from django.contrib.auth import authenticate
@@ -35,21 +35,20 @@ def getRoutes(request):
     return Response(routes)
 
 @api_view(['GET'])
-def getUser(request):
-    queryset = User.objects.all()
-    serializer = UserSerializer(queryset,many=True)
+def getUser(request,pk):
+    queryset = User.objects.get(id=pk)
+    serializer = UserSerializer(queryset)
     return Response(serializer.data)
 
 @api_view(['POST'])
 def userCreate(request):
-    serializer = UserSerializer(data=request.data)
-    data={}
+    serializer = RegisterSerializer(data=request.data)
     if serializer.is_valid():
-        user = serializer.save()
-        data['response'] = "successfullay registerd a new user"
-        data['username'] = user.username
-        data['email'] = user.email
+        User.objects.create_user(
+            serializer.initial_data['username'],
+            serializer.initial_data['email'],
+            serializer.initial_data['password'],
+        )
+        return Response(serializer.data)
     else:
-        data= serializer.errors
-
-    return Response(data)
+        return Response(serializer._errors)
