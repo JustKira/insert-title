@@ -1,6 +1,9 @@
 import { createContext,useState,useEffect } from 'react'
 import jwt_decode from "jwt-decode"
 import { useNavigate  } from 'react-router-dom'
+import { useContext } from 'react'
+import axiosInstance from '../../utils/AxiosInstance'
+import useAxios from '../../utils/useAxios'
 
 const AuthContext = createContext();
 
@@ -11,7 +14,6 @@ export const AuthProvider = ({children}) => {
     let  [authTokens,setAuthTokens] = useState(  localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let  [user ,setUser] =  useState( localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
     let  [loading,setLoading] = useState(true)  
-
     const navigate = useNavigate ()
     
     let loginUser = async (e) => {
@@ -72,6 +74,7 @@ export const AuthProvider = ({children}) => {
         if(response.status === 200){
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
+            console.log('10023.RAN')
             localStorage.setItem('authTokens',JSON.stringify(data))
         }else{
             logoutUser()
@@ -107,6 +110,7 @@ export const AuthProvider = ({children}) => {
         return () => clearInterval(interval)
 
     }, [authTokens,loading])
+    
 
     return(
         <AuthContext.Provider value={contextData}>

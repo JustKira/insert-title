@@ -5,49 +5,48 @@ from django.contrib.auth.models import User
 
 
 class Student(models.Model): 
-    #user = models.ForeignKey(User,on_delete=CASCADE)
-
-    #first_name = models.TextField()
-    #middle_name = models.TextField()
-    #last_name = models.TextField()
-    #email = models.EmailField(unique=True)
-
+    #MUST HAVE >>
+    user = models.ForeignKey(User,on_delete=CASCADE,null=True)
+    first_name = models.TextField()
+    middle_name = models.TextField()
+    last_name = models.TextField()
+    email = models.EmailField(unique=True)
     bio = models.TextField()
-    education = models.TextField()
+    undergraduate_year = models.IntegerField()
     phone_number = models.TextField()
     birthdate = models.DateTimeField()
 
     # Might be useful in categorization
-    undergraduate_year = models.IntegerField()
+    education = models.TextField(null=True,blank=True)
 
     # Written in the form of a list for later parsing
-    work_experience = models.TextField()
-    volunteering_experience = models.TextField()
-    memberships = models.TextField()
+    work_experience = models.TextField(null=True,blank=True)
+    volunteering_experience = models.TextField(null=True,blank=True)
+    memberships = models.TextField(null=True,blank=True)
 
     # Written in the form of dictionary {language:level_of_proficiency}
-    languages = models.TextField()
+    languages = models.TextField(null=True,blank=True)
 
     # Can be used to automatically import user repositories for portfolio auto-fill #TODO
-    github_link = models.URLField()
+    github_link = models.URLField(null=True,blank=True)
     # Can be used to import other fields to make profile completion easier #TODO
 
-    linkedin_link = models.URLField()
+    linkedin_link = models.URLField(null=True,blank=True)
     # Dictionary format for later parsing
-    other_website_links = models.TextField()
+    other_website_links = models.TextField(null=True,blank=True)
 
-    extra_info = models.TextField()
+    extra_info = models.TextField(null=True,blank=True)
 
     # Needs to be setup
-    profile_image = models.ImageField()
-    resume = models.FileField()
+    profile_image = models.ImageField(null=True,blank=True)
+    resume = models.FileField(null=True,blank=True)
 
     # Not sure about on_delete, needs testing
-    career = models.ForeignKey(
-        'roadmap_system.Career', on_delete=models.DO_NOTHING)
+    #career = models.ForeignKey(
+        #'roadmap_system.Career', on_delete=models.DO_NOTHING)
 
     # TODO Needs testing
-    postings = models.ManyToManyField('Posting')
+    #postings = models.ManyToManyField('Posting')
 
 
 class Posting(models.Model):

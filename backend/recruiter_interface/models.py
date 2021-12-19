@@ -4,6 +4,7 @@ from django.db import models
 
 
 class Recruiter(models.Model):
+    
     first_name = models.TextField()
     middle_name = models.TextField()
     last_name = models.TextField()
