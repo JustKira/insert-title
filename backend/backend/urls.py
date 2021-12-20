@@ -11,4 +11,5 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html')),
     path('api/',include('ral.api.urls')),
     path('api/',include('student_interface.api.urls')),
+    path('api/',include('recruiter_interface.api.urls')),
 ]
