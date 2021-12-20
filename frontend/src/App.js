@@ -9,10 +9,12 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/ral/LoginPage'
 import RegisterPage from './pages/ral/RegisterPage'
 import Header from './components/Header'
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div className="App">
+      <div className='wrapper'>
       <Router> 
         <AuthProvider>        
         <Header/>
@@ -24,7 +26,9 @@ function App() {
           </Route>
         </Routes>
         </AuthProvider>
+        <Footer />
       </Router> 
+      </div>
     </div>
   );
 }
