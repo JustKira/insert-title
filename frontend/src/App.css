@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700");
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap");
 /* body {
 } */
 
@@ -89,6 +90,8 @@
 .nav li {
   float: right;
   padding: 10px;
+  font-family: "Rajdhani";
+  font-size: 20px;
 }
 
 #headerlogo {
@@ -115,26 +118,29 @@
 
 .landing {
   background-image: url("./private_assets/landing.png");
-  background-size: cover;
-  height: 720px;
+  background-size: 100% auto;
+  height: 300px;
+  background-repeat: no-repeat;
 }
 
 .center {
   margin: 0;
   position: absolute;
-  top: 74%;
-  left: 56.5%;
+  top: 50%;
+  left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
-.landing_text {
+#landing_text {
+  margin: 10px;
   border: none;
   border-bottom: 2px solid black;
+  border-radius: 20px;
   width: 180px;
-  height: 40px;
+  height: 50px;
   background-color: #f1f1f1;
-  font-size: 24px;
+  font-size: 15px;
   font-weight: bold;
   text-align: center;
 }
@@ -165,4 +171,33 @@
   height: 300px;
   display: block;
   margin: auto;
+}
+
+.landing_textblock {
+  display: table-cell;
+  vertical-align: middle;
+  width: 350px;
+  height: 70px;
+  border: black;
+  border-radius: 30px;
+  background-color: white;
+}
+
+.landing_textlabel {
+  padding: 20px;
+  padding-right: 0px;
+  font-family: "Calibri";
+  font-size: 40px;
+  color: #1072ea;
+  display: inline;
+  line-height: 70px;
+  font-weight: bold;
+}
+
+.landing_slogan {
+  text-align: center;
+  background-color: #e4f5f9;
+  height: 150px;
+  font-family: "Josefin Sans", sans-serif;
+  line-height: 150px;
 }
