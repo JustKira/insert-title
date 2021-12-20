@@ -21,6 +21,12 @@
 
 .footer {
   grid-area: footer;
+  background-color: #004863;
+  color: white;
+}
+
+.footer_text {
+  padding: 8px;
 }
 
 .wrapper {
@@ -116,8 +122,8 @@
 .center {
   margin: 0;
   position: absolute;
-  top: 69%;
-  left: 57.5%;
+  top: 74%;
+  left: 56.5%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
@@ -125,8 +131,8 @@
 .landing_text {
   border: none;
   border-bottom: 2px solid black;
-  width: 320px;
-  height: 50px;
+  width: 180px;
+  height: 40px;
   background-color: #f1f1f1;
   font-size: 24px;
   font-weight: bold;
