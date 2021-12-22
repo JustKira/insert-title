@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 import os
 
@@ -19,7 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # This is path of project it self (USE IT IF U WANT TO ACCESS SMT FROM OUTSIDE OF DJANGO Project)
 TRUE_ROOT = Path(__file__).resolve().parent.parent.parent
 
-from datetime import timedelta
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -204,5 +204,5 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#TODO remove this shit and make better one
+# TODO remove this shit and make better one
 CORS_ALLOW_ALL_ORIGINS = True
