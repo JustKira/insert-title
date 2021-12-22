@@ -21,10 +21,18 @@ function App() {
         <Header/>
         <Routes>
           <Route element={<LoginPage/>} path="/login" />
+<<<<<<< HEAD
           <Route element={<RegisterPage/>} path="/Register" />
           <Route element={<ProtectedeRoute/>}/>
           <Route element={<HomePage/>} path="/" exact/>    
               </Routes>   
+=======
+          <Route element={<RegisterPage/>} path="/register" />
+          <Route element={<ProtectedeRoute/>}>
+            <Route element={<HomePage/>} path="/" exact/>
+          </Route>
+        </Routes>
+>>>>>>> refs/remotes/origin/master
         </AuthProvider>
         <Footer />
       </Router> 

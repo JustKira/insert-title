@@ -6,13 +6,15 @@ const LoginPage = () => {
     let {loginUser} = useContext(AuthContext)
     
     return (
-        <div>
+        <div className='form_container content'>
             <form onSubmit={loginUser}>
                 <input type='text' name='username' placeholder='Enter Username'/>
                 <input type='password' name='password' placeholder='Enter Password'/>
-                <input type='submit'/>
+                <input type='submit' className='submitbtn'/>
             </form>
-            <Link to="/Register">Register</Link>
+            <div class="container form_text">
+                <p>Already have an account? <Link to="/Register">Register</Link></p>
+            </div>
         </div>
     )
 }

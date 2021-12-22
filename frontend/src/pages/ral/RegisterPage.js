@@ -6,15 +6,20 @@ const RegisterPage = () => {
     let {registerUser} = useContext(AuthContext)
     
     return (
-        <div>
+        <div className='form_container content'>
+            <h2>Register</h2>
             <form onSubmit={registerUser}>
                 <input type='text' name='username' placeholder='Enter Username'/>
                 <input type='email' name='email' placeholder ='Enter email'/>
                 <input type='password' name='password' placeholder='Enter Password'/>
                 <input type='password' name='password2' placeholder='Enter Confirm Password'/>
-                <input type='submit'/>
+                <hr/>
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                <input type='submit' className='submitbtn'/>
             </form>
-            <Link to="/Login">Login</Link>
+            <div class="container form_text">
+                <p>Already have an account? <Link to="/Login">Login</Link></p>
+            </div>
         </div>
     )
 }
