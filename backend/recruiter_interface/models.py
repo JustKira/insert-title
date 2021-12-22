@@ -6,7 +6,10 @@ from django.contrib.auth.models import User
 
 class Recruiter(models.Model):
 
+<<<<<<< HEAD
     user = models.ForeignKey(User,on_delete=CASCADE,null=True)
+=======
+>>>>>>> 65626932a79c656a733b03396fa59d5d9b7ee3a2
     first_name = models.TextField()
     middle_name = models.TextField()
     last_name = models.TextField()
@@ -24,6 +27,8 @@ class Recruiter(models.Model):
     company_size = models.TextField(null=True,blank=True)
     industry = models.TextField(null=True,blank=True)
     company_description = models.TextField(null=True,blank=True)
+
+    profile_image = models.ImageField(null=True, blank=True)
 
     # IMPORTANT
     verified = models.BooleanField(null=True,blank=True)
