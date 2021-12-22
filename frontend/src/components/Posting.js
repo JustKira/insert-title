@@ -19,7 +19,6 @@ const Posting = ({ image, title, recruiter, keywords, paid, last_modified }) => 
                 <p>Last modified: {last_modified}</p>
             </div>
             <div className='posting_info2_wrapper'>
-                <p>{location}</p>
             </div>
 
         </div>

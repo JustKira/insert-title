@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Recruiter(models.Model):
-    
+
     first_name = models.TextField()
     middle_name = models.TextField()
     last_name = models.TextField()
@@ -22,6 +22,8 @@ class Recruiter(models.Model):
     company_size = models.TextField()
     industry = models.TextField()
     company_description = models.TextField()
+
+    profile_image = models.ImageField(null=True, blank=True)
 
     # IMPORTANT
     verified = models.BooleanField()

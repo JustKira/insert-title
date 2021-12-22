@@ -10,6 +10,7 @@ import LoginPage from './pages/ral/LoginPage'
 import RegisterPage from './pages/ral/RegisterPage'
 import Header from './components/Header'
 import Footer from "./components/Footer";
+import PostingsPage from "./pages/PostingsPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route element={<RegisterPage/>} path="/register" />
           <Route element={<ProtectedeRoute/>}>
             <Route element={<HomePage/>} path="/" exact/>
+            <Route element={<PostingsPage/>} path="/postings" exact/>
           </Route>
         </Routes>
         </AuthProvider>

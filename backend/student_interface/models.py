@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class Student(models.Model): 
-    #MUST HAVE >>
-    user = models.ForeignKey(User,on_delete=CASCADE,null=True)
+class Student(models.Model):
+    # MUST HAVE >>
+    user = models.ForeignKey(User, on_delete=CASCADE, null=True)
     first_name = models.TextField()
     middle_name = models.TextField()
     last_name = models.TextField()
@@ -17,33 +17,33 @@ class Student(models.Model):
     birthdate = models.DateTimeField()
 
     # Might be useful in categorization
-    education = models.TextField(null=True,blank=True)
+    education = models.TextField(null=True, blank=True)
 
     # Written in the form of a list for later parsing
-    work_experience = models.TextField(null=True,blank=True)
-    volunteering_experience = models.TextField(null=True,blank=True)
-    memberships = models.TextField(null=True,blank=True)
+    work_experience = models.TextField(null=True, blank=True)
+    volunteering_experience = models.TextField(null=True, blank=True)
+    memberships = models.TextField(null=True, blank=True)
 
     # Written in the form of dictionary {language:level_of_proficiency}
-    languages = models.TextField(null=True,blank=True)
+    languages = models.TextField(null=True, blank=True)
 
     # Can be used to automatically import user repositories for portfolio auto-fill #TODO
-    github_link = models.URLField(null=True,blank=True)
+    github_link = models.URLField(null=True, blank=True)
     # Can be used to import other fields to make profile completion easier #TODO
 
-    linkedin_link = models.URLField(null=True,blank=True)
+    linkedin_link = models.URLField(null=True, blank=True)
     # Dictionary format for later parsing
-    other_website_links = models.TextField(null=True,blank=True)
+    other_website_links = models.TextField(null=True, blank=True)
 
-    extra_info = models.TextField(null=True,blank=True)
+    extra_info = models.TextField(null=True, blank=True)
 
     # Needs to be setup
-    profile_image = models.ImageField(null=True,blank=True)
-    resume = models.FileField(null=True,blank=True)
+    profile_image = models.ImageField(null=True, blank=True)
+    resume = models.FileField(null=True, blank=True)
 
     # Not sure about on_delete, needs testing
-    #career = models.ForeignKey(
-        #'roadmap_system.Career', on_delete=models.DO_NOTHING)
+    # career = models.ForeignKey(
+    # 'roadmap_system.Career', on_delete=models.DO_NOTHING)
 
     # TODO Needs testing
     #postings = models.ManyToManyField('Posting')
@@ -58,6 +58,7 @@ class Posting(models.Model):
         'recruiter_interface.Recruiter', on_delete=models.DO_NOTHING)
     career = models.ForeignKey(
         'roadmap_system.Career', on_delete=models.DO_NOTHING)
+    title = models.TextField()
     job_description = models.TextField()
     paid = models.BooleanField()
     salary = models.IntegerField()
@@ -67,6 +68,8 @@ class Posting(models.Model):
     experience = models.TextField()
 
     education_req = models.TextField()
+
+    image = models.ImageField(null=True, blank=True)
 
     # In list form
     skills_needed = models.TextField()
