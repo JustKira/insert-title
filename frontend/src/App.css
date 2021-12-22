@@ -201,3 +201,82 @@
   font-family: "Josefin Sans", sans-serif;
   line-height: 150px;
 }
+
+.landing_final_wrapper {
+  text-align: center;
+  padding: 40px;
+  height: 200px;
+  background-color: #eff3f6;
+  font-family: "Poppins";
+}
+
+.landing_final_btn {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  margin-top: 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.form_container {
+  padding: 16px;
+  margin-right: 30px;
+}
+
+/* Full-width input fields */
+.form_container input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 15px;
+  padding-right: 0px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+.form_container input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+.form_container hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.form_container .submitbtn {
+  background-color: #04aa6d;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.submitbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+.form_container a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.form_container .form_text {
+  background-color: #f1f1f1;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+}

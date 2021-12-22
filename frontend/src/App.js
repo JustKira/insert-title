@@ -20,7 +20,7 @@ function App() {
         <Header/>
         <Routes>
           <Route element={<LoginPage/>} path="/login" />
-          <Route element={<RegisterPage/>} path="/Register" />
+          <Route element={<RegisterPage/>} path="/register" />
           <Route element={<ProtectedeRoute/>}>
             <Route element={<HomePage/>} path="/" exact/>
           </Route>
