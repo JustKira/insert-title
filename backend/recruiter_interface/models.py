@@ -1,15 +1,12 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
-from django.contrib.auth.models import User
+from ral.models import ITUser
 # Create your models here.
 
 
 class Recruiter(models.Model):
 
-<<<<<<< HEAD
-    user = models.ForeignKey(User,on_delete=CASCADE,null=True)
-=======
->>>>>>> 65626932a79c656a733b03396fa59d5d9b7ee3a2
+    user = models.ForeignKey(ITUser,on_delete=CASCADE,null=True)
     first_name = models.TextField()
     middle_name = models.TextField()
     last_name = models.TextField()

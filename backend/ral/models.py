@@ -20,7 +20,7 @@ class ITU_AccountManager(BaseUserManager):
 
         return self.create_user(email,username,first_name,password,**other_fields)    
 
-    def create_user(self, email, username, password,first_name = 'x', **other_fields):
+    def create_user(self,first_name, username, email ,password , **other_fields):
 
         if not email:
             raise ValueError(_('You must provide an email address'))

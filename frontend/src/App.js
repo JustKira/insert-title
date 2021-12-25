@@ -12,7 +12,6 @@ import Header from './components/Header'
 import Footer from "./components/Footer";
 import PostingsPage from "./pages/PostingsPage";
 
-
 function App() {
   return (
     <div className="App">
@@ -22,19 +21,12 @@ function App() {
         <Header/>
         <Routes>
           <Route element={<LoginPage/>} path="/login" />
-<<<<<<< HEAD
-          <Route element={<RegisterPage/>} path="/Register" />
-          <Route element={<ProtectedeRoute/>}/>
-          <Route element={<HomePage/>} path="/" exact/>    
-              </Routes>   
-=======
           <Route element={<RegisterPage/>} path="/register" />
           <Route element={<ProtectedeRoute/>}>
             <Route element={<HomePage/>} path="/" exact/>
             <Route element={<PostingsPage/>} path="/postings" exact/>
           </Route>
         </Routes>
->>>>>>> refs/remotes/origin/master
         </AuthProvider>
         <Footer />
       </Router> 

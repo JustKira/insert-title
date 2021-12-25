@@ -25,7 +25,7 @@ export const AuthProvider = ({children}) => {
             headers:{
                 'Content-Type':'application/json',
             },
-            body:JSON.stringify({'username':e.target.username.value,'password':e.target.password.value})
+            body:JSON.stringify({'email':e.target.email.value,'password':e.target.password.value})
         })
         let data = await response.json()
          
@@ -47,7 +47,7 @@ export const AuthProvider = ({children}) => {
             headers:{
                 'Content-Type':'application/json'
             },
-            body:JSON.stringify({'username':e.target.username.value,'email':e.target.email.value,'password':e.target.password.value,'password2':e.target.password.value})
+            body:JSON.stringify({'username':e.target.username.value,'email':e.target.email.value,'first_name':e.target.first_name.value,'password':e.target.password.value,'password2':e.target.password.value})
         })
         console.log(response.data)
     }
@@ -62,7 +62,7 @@ export const AuthProvider = ({children}) => {
 
     let updateToken = async () =>{
         console.log('Token got updated')
-        let response = await fetch('http://127.0.0.1:8000/api/token/refresh/',{
+        let response = await fetch('http://127.0.0.1:8000/api/token/refresh',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'

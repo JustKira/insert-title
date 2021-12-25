@@ -34,7 +34,10 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [ 
+    
+    'ral',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'CV_builder',
-    'ral',
+  
     'recruiter_interface',
     'roadmap_system',
     'student_interface',
@@ -50,6 +53,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     "corsheaders",
 ]
+
+AUTH_USER_MODEL = 'ral.ITUser'
 
 REST_FRAMEWORK = {
 
@@ -206,3 +211,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # TODO remove this shit and make better one
 CORS_ALLOW_ALL_ORIGINS = True
+

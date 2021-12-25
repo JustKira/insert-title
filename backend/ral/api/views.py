@@ -7,12 +7,13 @@ from ral.models import ITUser
 from django.contrib.auth import authenticate
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
 
         # Add custom claims
-        token['username'] = user.username
+        token['email'] = user.email
         # ...
 
         return token
@@ -40,9 +41,9 @@ def userCreate(request):
     serializer = RegisterSerializer(data=request.data)
     if serializer.is_valid():
         ITUser.objects.create_user(
-            serializer.initial_data['email'],
-            serializer.initial_data['username'],   
-            serializer.initial_data['first_name'],        
+            serializer.initial_data['first_name'], 
+            serializer.initial_data['username'],  
+            serializer.initial_data['email'],       
             serializer.initial_data['password'],
         )
         return Response(serializer.data)

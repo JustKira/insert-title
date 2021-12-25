@@ -1,12 +1,12 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
-from django.contrib.auth.models import User
+from ral.models import ITUser
 # Create your models here.
 
 
 class Student(models.Model):
     # MUST HAVE >>
-    user = models.ForeignKey(User, on_delete=CASCADE, null=True)
+    user = models.ForeignKey(ITUser, on_delete=CASCADE, null=True)
     first_name = models.TextField()
     middle_name = models.TextField()
     last_name = models.TextField()

@@ -8,12 +8,12 @@ const LoginPage = () => {
     return (
         <div className='form_container content'>
             <form onSubmit={loginUser}>
-                <input type='text' name='username' placeholder='Enter Username'/>
+                <input type='email' name='email' placeholder='Enter email'/>
                 <input type='password' name='password' placeholder='Enter Password'/>
                 <input type='submit' className='submitbtn'/>
             </form>
             <div class="container form_text">
-                <p>Already have an account? <Link to="/Register">Register</Link></p>
+                <p>Dont have an account? make one. <Link to="/Register">Register</Link></p>
             </div>
         </div>
     )

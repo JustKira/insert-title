@@ -9,6 +9,7 @@ const RegisterPage = () => {
         <div className='form_container content'>
             <h2>Register</h2>
             <form onSubmit={registerUser}>
+                <input type='text' name='first_name' placeholder='Enter your FirstName'/>
                 <input type='text' name='username' placeholder='Enter Username'/>
                 <input type='email' name='email' placeholder ='Enter email'/>
                 <input type='password' name='password' placeholder='Enter Password'/>
