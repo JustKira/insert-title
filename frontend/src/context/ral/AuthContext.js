@@ -14,12 +14,13 @@ export const AuthProvider = ({children}) => {
     let  [authTokens,setAuthTokens] = useState( localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let  [user ,setUser] =  useState( localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
     let  [loading,setLoading] = useState(true)  
+    let  [ituser,setItuser] = useState()
     const navigate = useNavigate ()
-    
+
     let loginUser = async (e) => {
 
         e.preventDefault()
-
+        
         let response = await fetch('http://127.0.0.1:8000/api/token',{
             method:'POST',
             headers:{
@@ -33,6 +34,7 @@ export const AuthProvider = ({children}) => {
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
             localStorage.setItem('authTokens',JSON.stringify(data))
+            getUser()
             navigate('/')
         }else{
             alert('Somthing went wronge')
@@ -56,6 +58,7 @@ export const AuthProvider = ({children}) => {
     let logoutUser = () => {
         setAuthTokens(null)
         setUser(null)
+        setItuser(null)
         localStorage.removeItem('authTokens')
         navigate('/login')
     }
@@ -76,6 +79,7 @@ export const AuthProvider = ({children}) => {
             setUser(jwt_decode(data.access))
             console.log('10023.RAN')
             localStorage.setItem('authTokens',JSON.stringify(data))
+            getUser()
         }else{
             logoutUser()
         }
@@ -84,14 +88,31 @@ export const AuthProvider = ({children}) => {
         }
     } 
 
+    let getUser = async () => {
+        let response = await fetch(`http://127.0.0.1:8000/api/user/${user.user_id}`,{
+            method:'GET',
+            headers:{
+                'Content-Type':'application/json',
+            },
+        })
+        let data = await response.json()
+         
+        if(response.status === 200){
+            setItuser(data)
+        }
+    } 
+
     let contextData={
         user:user,
+        ituser:ituser,
         authTokens:authTokens,
+        getUser:getUser,
         registerUser:registerUser,
         logoutUser:logoutUser,
         loginUser:loginUser,
         
     }
+
 
     useEffect(() => {
 

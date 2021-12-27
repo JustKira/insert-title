@@ -4,6 +4,7 @@ import dayjs from 'dayjs'
 import { useContext } from 'react'
 import axiosInstance from './AxiosInstance'
 import AuthContext from '../context/ral/AuthContext'
+
 const baseURL='http://127.0.0.1:8000'
 
 const useAxios = () => {
@@ -22,7 +23,7 @@ const useAxios = () => {
     
         if(!isExpired) return req
     
-        const response = await axios.post(`${baseURL}/api/token/refresh/`,{
+        const response = await axios.post(`${baseURL}/api/token/refresh`,{
             refresh:authTokens.refresh
         })
         localStorage.setItem('authTokens',JSON.stringify(response.data))

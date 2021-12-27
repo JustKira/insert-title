@@ -5,8 +5,21 @@ import AuthContext from "../context/ral/AuthContext";
 
 const ProtectedeRoute = () => {
 
-  let {user} = useContext(AuthContext)
-  return user ? <Outlet /> : <Navigate to="/Login" />;
+  let {ituser} = useContext(AuthContext)
+  let isClassed = (user) => {
+    if(user){
+      if(user.classified){
+        return true
+      }
+      else{
+        return null
+      }
+    }
+    else{
+      return null
+    }
+  }
+  return isClassed(ituser)? <Outlet /> : <Navigate to="/SR" />;
   
 };
 

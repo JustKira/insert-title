@@ -2,9 +2,12 @@ import React from 'react'
 import DescriptionBlock from '../components/DescriptionBlock'
 import DescriptionBlockRev from '../components/DescriptionBlockRev'
 import { Link } from 'react-router-dom';
+import AuthContext from '../context/ral/AuthContext';
+import { useContext } from 'react'
 
 const HomePage = () => {
     let names = ['Doctor', 'Engineer', 'Programmer', 'YOU']
+    let {ituser} = useContext(AuthContext)
     let landing_animation = ()=>{
         console.log('here')
         setInterval(async ()=>{

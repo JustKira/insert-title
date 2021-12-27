@@ -8,7 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ITUser
-        fields = ['id','username','email','password']
+        fields = ['id','username','email','password','is_classified','usertype']
 
 class RegisterSerializer(serializers.ModelSerializer):
 
@@ -27,5 +27,5 @@ class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = ITUser
         # Tuple of serialized model fields (see link [2])
-        fields = ( "username","email", "password" )
+        fields = ( "username","email", "password")
 
