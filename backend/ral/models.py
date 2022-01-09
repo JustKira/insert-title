@@ -67,11 +67,11 @@ class ITUser(AbstractBaseUser,PermissionsMixin):
 
     #Student
     undergraduate_year = models.IntegerField(null=True,blank=True)
-    phone_number = models.TextField()
-    birthdate = models.DateTimeField(null=True, blank=True)
+    # phone_number = models.TextField()
+    # birthdate = models.DateTimeField(null=True, blank=True)
 
     # Might be useful in categorization
-    education = models.TextField(null=True, blank=True)
+    university = models.TextField(null=True, blank=True)
 
     # Written in the form of a list for later parsing
     work_experience = models.TextField(null=True, blank=True)
