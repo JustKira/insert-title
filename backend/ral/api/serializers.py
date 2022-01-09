@@ -8,7 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ITUser
-        fields = ['id','username','email','password','is_classified','usertype']
+        fields = ['id','username','email','password']
 
 class RegisterSerializer(serializers.ModelSerializer):
 
@@ -17,6 +17,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
 
         user = ITUser.objects.create_user(
+            frist_name=validated_data['frist_name'],
             username=validated_data['user_name'],
             email=validated_data['email'],
             password=validated_data['password'],
@@ -27,5 +28,5 @@ class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = ITUser
         # Tuple of serialized model fields (see link [2])
-        fields = ( "username","email", "password")
+        fields = ( "username","email", "password" )
 

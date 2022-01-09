@@ -38,12 +38,63 @@ class ITUser(AbstractBaseUser,PermissionsMixin):
     username = models.CharField(max_length=150 , unique=True)
     first_name = models.CharField(max_length=150)
     join_date = models.DateTimeField(auto_now_add=True)
-    usertype = models.CharField(max_length=50 , default='public')
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-    is_classified = models.BooleanField(default=False,null=False)
+    is_classified = models.BooleanField(default=False)
     
+    #Recruiter
+    phone_number = models.TextField(null=True,blank=True)
+    birthdate = models.DateTimeField(null=True,blank=True)
+    bio = models.TextField(null=True,blank=True)
+
+    contact_links = models.TextField(null=True,blank=True)
+
+    is_company = models.BooleanField(null=True,blank=True)
+
+    # If is_company == True
+    institution_name = models.TextField(null=True,blank=True)
+    company_size = models.TextField(null=True,blank=True)
+    industry = models.TextField(null=True,blank=True)
+    company_description = models.TextField(null=True,blank=True)
+
+    profile_image = models.ImageField(null=True, blank=True)
+
+    # IMPORTANT
+    verified = models.BooleanField(null=True,blank=True)
+
+    #careers = models.ManyToManyField('roadmap_system.Career')
+
+    #Student
+    undergraduate_year = models.IntegerField(null=True,blank=True)
+    phone_number = models.TextField()
+    birthdate = models.DateTimeField(null=True, blank=True)
+
+    # Might be useful in categorization
+    education = models.TextField(null=True, blank=True)
+
+    # Written in the form of a list for later parsing
+    work_experience = models.TextField(null=True, blank=True)
+    volunteering_experience = models.TextField(null=True, blank=True)
+    memberships = models.TextField(null=True, blank=True)
+
+    # Written in the form of dictionary {language:level_of_proficiency}
+    languages = models.TextField(null=True, blank=True)
+
+    # Can be used to automatically import user repositories for portfolio auto-fill #TODO
+    github_link = models.URLField(null=True, blank=True)
+    # Can be used to import other fields to make profile completion easier #TODO
+
+    linkedin_link = models.URLField(null=True, blank=True)
+
+    other_website_links = models.TextField(null=True, blank=True)
+
+    extra_info = models.TextField(null=True, blank=True)
+    profile_image = models.ImageField(null=True, blank=True)
+    resume = models.FileField(null=True, blank=True)
+
+    #
+
     objects = ITU_AccountManager()
 
     USERNAME_FIELD = 'email'

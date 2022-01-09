@@ -1,10 +1,13 @@
-const authReducer  = (state,action) => {
-    switch(action.type){
-        case 'LOGIN':
-            return state.payload
-        case 'LOGOUT':
-            return state
+function authReducer(state = { state:{refresh : '', access: ''} },action){
+    switch (action.type) {
+        case 'USER_LOGIN':
+          return { ...state, state : action.payload }
+        case 'TOKEN_REFRESH':
+          return { ...state, state : action.payload }
+        case 'USER_LOGOUT':
+          return { ...state, state : null }
+        default:
+          return state
     }
 }
-
 export default authReducer

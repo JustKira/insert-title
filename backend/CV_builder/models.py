@@ -14,7 +14,3 @@ class CV(models.Model):
     template_name = models.TextField()
     # List form
     institutions = models.TextField()
-
-    # In case a recruiter wants to add a specific format so we can support it
-    recruiter = models.ForeignKey(
-        'recruiter_interface.Recruiter', null=True, on_delete=models.DO_NOTHING)

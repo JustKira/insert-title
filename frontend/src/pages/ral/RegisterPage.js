@@ -1,27 +1,52 @@
-import React,{useContext} from 'react'
-import { Link } from 'react-router-dom';
-import AuthContext from '../../context/ral/AuthContext'
+import React from 'react'
+import { Field,reduxForm} from 'redux-form'
+import { connect } from 'react-redux';
+import { compose } from 'redux'
 
-const RegisterPage = () => {
-    let {registerUser} = useContext(AuthContext)
+const RegisterPage = (props) => {
+   
+    function rFieldInput({input,label}) {
+        return (
+            <div>
+                <label>{label}</label>
+                <input {...input}/>
+            </div>
+        )
+    }
+
+    function onSubmit({first_name,username,email,password}){
+        console.log(first_name + username + email + password)
+        CreateAccount(first_name,username,email,password)
+    }
     
     return (
-        <div className='form_container content'>
-            <h2>Register</h2>
-            <form onSubmit={registerUser}>
-                <input type='text' name='first_name' placeholder='Enter your FirstName'/>
-                <input type='text' name='username' placeholder='Enter Username'/>
-                <input type='email' name='email' placeholder ='Enter email'/>
-                <input type='password' name='password' placeholder='Enter Password'/>
-                <input type='password' name='password2' placeholder='Enter Confirm Password'/>
-                <hr/>
-                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-                <input type='submit' className='submitbtn'/>
+        <div>
+            <form onSubmit={props.handleSubmit(onSubmit)}>
+                <Field name='first_name' component={rFieldInput} label='first_name' />
+                <Field name='username' component={rFieldInput} label='username' />
+                <Field name='email' component={rFieldInput} label='email' />
+                <Field name='password' component={rFieldInput} label='password' />
+                <Field name='password2' component={rFieldInput} label='Confirm Password' />
+                <button>Next</button>
             </form>
-            <div class="container form_text">
-                <p>Already have an account? <Link to="/Login">Login</Link></p>
-            </div>
         </div>
     )
 }
-export default RegisterPage
+const CreateAccount = async (first_name,username,email,password,password2) => {
+    let response = await fetch('http://127.0.0.1:8000/api/user-create',{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify({'first_name':first_name,'username':username,'email':email,'password':password})
+    })
+}
+const mapPropsToState = (state) => {
+    return { accessToken : state.auth.state.access}
+}
+export default compose(
+    reduxForm({
+        form: 'registerPage'
+    }),
+    connect(mapPropsToState)
+)(RegisterPage)

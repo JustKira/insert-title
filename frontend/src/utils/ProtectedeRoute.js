@@ -2,25 +2,12 @@
 import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import AuthContext from "../context/ral/AuthContext";
-
-const ProtectedeRoute = () => {
-
-  let {ituser} = useContext(AuthContext)
-  let isClassed = (user) => {
-    if(user){
-      if(user.classified){
-        return true
-      }
-      else{
-        return null
-      }
-    }
-    else{
-      return null
-    }
-  }
-  return isClassed(ituser)? <Outlet /> : <Navigate to="/SR" />;
+import { connect } from "react-redux";
+const ProtectedeRoute = (props) => {
+  return props.accessToken ? <Outlet /> : <Navigate to="/Login" />;
   
 };
-
-export default ProtectedeRoute;
+const mapPropsToState = (state) => {
+  return { accessToken : state.auth.state.access}
+}
+export default connect(mapPropsToState)(ProtectedeRoute);

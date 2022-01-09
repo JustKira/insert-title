@@ -1,14 +1,11 @@
-const state = {
-    auth: null,
-}
-
-const usereducer  = (state = state,action) => {
-    switch(action.type){
-        case 'LOGIN':
-            return {...state, auth : action.payload}
-        case 'LOGOUT':
-            return state
+function userReducer(state = { }, action){
+    switch (action.type) {
+        case 'GET_USER_DATA':
+          return { ...state, state : action.payload }
+        case 'USER_LOGOUT':
+          return { ...state, state : null }
+        default:
+          return state
     }
 }
-
-export default usereducer
+export default userReducer

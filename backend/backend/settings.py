@@ -45,10 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'CV_builder',
-  
-    'recruiter_interface',
     'roadmap_system',
-    'student_interface',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     "corsheaders",
