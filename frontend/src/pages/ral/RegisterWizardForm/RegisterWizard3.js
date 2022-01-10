@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Field, reduxForm } from "redux-form";
 
 const RegisterWizard3 = (props) => {
   const { handleSubmit, previousPage } = props;
-
+  const [inCompany, setinCompany] = useState(0)
   function rFieldInput({ input, label, type }) {
     return (
       <div>
@@ -28,15 +28,63 @@ const RegisterWizard3 = (props) => {
     );
   }
 
+  const Extras = () => {
+    if(inCompany === 1){
+      return(
+        <div>
+          <Field
+              name="company_name"
+              type="text"
+              component={rFieldInput}
+              label="Company Name"
+            />
+            <Field
+              name="company_size"
+              type="text"
+              component={rFieldInput}
+              label="Company Size"
+            />
+            <Field
+              name="industry"
+              type="text"
+              component={rFieldInput}
+              label="Industry"
+            />
+            <Field
+              name="company_desc"
+              type="text"
+              component={rFieldInput}
+              label="Company Description"
+            />
+            {/* If company */}
+            <Field
+              name="profile_image"
+              type="file"
+              component={rFieldInput}
+              label="Profile Image"
+            />
+            <Field
+              name="verification"
+              type="file"
+              component={rFieldInput}
+              label="Verification Document"
+            />
+        </div>
+        )
+    }else{
+      return(<div></div>)
+    }
+    
+  }
   function rRadioInput({ label, option1, option2 }) {
     return (
       <div>
         <label>{label}</label>
         <br />
         <label for={option1}>{option1}</label>
-        <input type="radio" id={option1} value={option1} name={label} />
+        <input type="radio" id={option1} value={option1} name={label} onClick={setinCompany(1)}/>
         <label for={option2}>{option2}</label>
-        <input type="radio" id={option2} value={option2} name={label} />
+        <input type="radio" id={option2} value={option2} name={label} onClick={setinCompany(0)}/>
       </div>
     );
   }
@@ -60,43 +108,7 @@ const RegisterWizard3 = (props) => {
           option2="No"
         />
         {/* If company */}
-        <Field
-          name="company_name"
-          type="text"
-          component={rFieldInput}
-          label="Company Name"
-        />
-        <Field
-          name="company_size"
-          type="text"
-          component={rFieldInput}
-          label="Company Size"
-        />
-        <Field
-          name="industry"
-          type="text"
-          component={rFieldInput}
-          label="Industry"
-        />
-        <Field
-          name="company_desc"
-          type="text"
-          component={rFieldInput}
-          label="Company Description"
-        />
-        {/* If company */}
-        <Field
-          name="profile_image"
-          type="file"
-          component={rFieldInput}
-          label="Profile Image"
-        />
-        <Field
-          name="verification"
-          type="file"
-          component={rFieldInput}
-          label="Verification Document"
-        />
+        <div> {Extras()} </div>
         <div>
           <button type="button" onClick={previousPage}>
             Previous

@@ -2,7 +2,7 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 
 const RegisterWizard1 = (props) => {
-  const { handleSubmit } = props;
+  const { handleSubmit ,stu ,rec} = props;
 
   function rFieldInput({ input, label, type }) {
     return (
@@ -13,15 +13,15 @@ const RegisterWizard1 = (props) => {
     );
   }
 
-  function rRadioInput({ label, option1, option2 }) {
+  function rRadioInput({ input,label, option1, option2 }) {
     return (
       <div>
         <label>{label}</label>
         <br />
         <label for={option1}>{option1}</label>
-        <input type="radio" id={option1} value={option1} name={label} />
+        <input type="radio" id={option1} value={option1} name={label} {...input} onClick={stu}/>
         <label for={option2}>{option2}</label>
-        <input type="radio" id={option2} value={option2} name={label} />
+        <input type="radio" id={option2} value={option2} name={label} {...input} onClick={rec}/>
       </div>
     );
   }

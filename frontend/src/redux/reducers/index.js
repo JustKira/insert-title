@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
-import userReducer from "./userreducer";
+import userReducer from "./userReducer";
 import { reducer as formReducer } from "redux-form";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";

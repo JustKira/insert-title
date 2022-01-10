@@ -9,6 +9,7 @@ import RegisterWizard3 from './RegisterWizard3';
 const RegisterWizardPage = () => {
 
     let [page,setPage] = useState(1)
+    let [wizardtype,setWizardtype] = useState()
 
     const nextPage = () => {
         setPage(page + 1)
@@ -18,11 +19,19 @@ const RegisterWizardPage = () => {
         setPage(page - 1)
     }
 
+    const stuForm = () => {
+        setWizardtype(0)
+    }
+
+    const recForm = () => {
+        setWizardtype(1)
+    }
+
     return (
         <div>
-            {page === 1 && <RegisterWizard1 onSubmit={() => nextPage()}/> }
-            {page === 2 && <RegisterWizard2 onSubmit={() => nextPage()} previousPage={() => previousPage()}/> }
-            {page === 3 && <RegisterWizard3 onSubmit={() => nextPage()} previousPage={() => previousPage()}/> }
+            {page === 1 && <RegisterWizard1 onSubmit={() => nextPage()} stu={stuForm} rec={recForm}/>}
+            {page === 2 && wizardtype === 0 && <RegisterWizard2 onSubmit={() => nextPage()} previousPage={() => previousPage()}/>  }
+            {page === 2 &&  wizardtype === 1 && <RegisterWizard3 onSubmit={() => nextPage()} previousPage={() => previousPage()}/> }
         </div>
     )
 }
