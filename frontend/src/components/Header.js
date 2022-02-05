@@ -1,7 +1,7 @@
 import React , {useContext} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import { userLogoutAction } from '../redux/actions'
 const Header = (props) => {
 
     return (
@@ -13,7 +13,7 @@ const Header = (props) => {
                 <li><Link to="/profile/">Profile</Link></li>
                 <li><Link to="/career">Career</Link></li>
                 {props.user ? (
-                <li><a>Logout</a></li>
+                <li><a onClick={props.userLogoutAction}>Logout</a></li>
             ):(
                 <li><Link to="/Login"> Login</Link></li>
                 
@@ -28,4 +28,4 @@ const mapPropsToState = (state) => {
         return { user : state.user.state}
     }
 }
-export default connect(mapPropsToState)(Header)
+export default connect(mapPropsToState,{userLogoutAction})(Header)

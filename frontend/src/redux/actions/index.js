@@ -14,19 +14,22 @@ export const userLogin = (email,password) => async (dispatch,getState) => {
         //     }
             
         // })
-        let response = await fetch('http://127.0.0.1:8000/api/token',{
+        let response = await fetch('http://127.0.0.1:8000/api/token/',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',
             },
-            body:JSON.stringify({'email':email,'password':password})
+            body:JSON.stringify({'email':email,'password':password}),
+            //redirect: 'follow'
         })
         let data = await response.json()
         dispatch({ type: 'USER_LOGIN', payload: data })
         dispatch(getUserAction())
         
 }
-
+export const userLogoutAction = () => {
+    return { type : 'USER_LOGOUT'}
+}
 export const refreshTokenAction = () => async (dispatch,getState) => {
 
     let response = await fetch('http://127.0.0.1:8000/api/token/refresh',{

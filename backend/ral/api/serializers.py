@@ -8,25 +8,30 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ITUser
-        fields = ['id','username','email','password']
-
-class RegisterSerializer(serializers.ModelSerializer):
+        fields = ['id','email','firstname','lastname','username','password','userType',
+        #These Field arent req can be pouplated later
+        'phone_number','birthdate','bio',
+        #STUDENT
+        'undergraduate_year','university','languages','github_link','linkedin_link','other_website_links',
+        #RECRUITER
+        'contact_links','is_company'
+        ]
 
     password = serializers.CharField(write_only=True)
 
     def create(self, validated_data):
 
         user = ITUser.objects.create_user(
-            frist_name=validated_data['frist_name'],
-            username=validated_data['user_name'],
+            
             email=validated_data['email'],
+            firstname=validated_data['firstname'],
+            lastname=validated_data['lastname'],
+            username=validated_data['username'],
             password=validated_data['password'],
+            userType=validated_data['userType'],    
+
         )
 
         return user
 
-    class Meta:
-        model = ITUser
-        # Tuple of serialized model fields (see link [2])
-        fields = ( "username","email", "password" )
 

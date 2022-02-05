@@ -1,6 +1,5 @@
 import React,{useContext, useEffect} from 'react'
 import { Link } from 'react-router-dom';
-import AuthContext from '../../context/ral/AuthContext'
 import { Field,reduxForm} from 'redux-form'
 import { connect } from 'react-redux';
 import { compose } from 'redux'
@@ -45,7 +44,7 @@ const LoginPage = (props) => {
     )
 }
 
-const mapPropsToState = (state) => {
+const mapStateToProps = (state) => {
     if(state.auth.state){
         return { accessToken : state.auth.state.access}
     }
@@ -54,5 +53,5 @@ export default compose(
     reduxForm({
         form: 'loginPage'
     }),
-    connect(mapPropsToState,{userLogin,getUserAction,refreshTokenAction})
+    connect(mapStateToProps,{userLogin,getUserAction,refreshTokenAction})
 )(LoginPage)
