@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Field,reduxForm} from 'redux-form'
 import { CustomField } from '../utils/CustomField';
 import {compose} from 'redux'
+import { getUserAction } from '../redux/actions';
 
 
 
@@ -40,23 +41,23 @@ const ProfilePage = (props) => {
                 <h1>{props.user.email} </h1>
                 <div>
                     <form onSubmit={props.handleSubmit(onSubmit)}>
-                        <Field name='firstname' component={CustomField} label='firstname' placeholder={props.user.firstname} type='text'/>
-                        <Field name='lastname' component={CustomField} label='lastname' placeholder={props.user.lastname} type='text'/>
-                        <Field name='username' component={CustomField} label='username' placeholder={props.user.username} type='text'/>
-                        <Field name='email' component={CustomField} label='email' placeholder={props.user.email} type='email'/>
-                        <Field name='phone_number' component={CustomField} label='phone_number' placeholder={props.user.phone_number} type='tel'/>
-                        <Field name='birthdate' component={CustomField} label='birthdate' placeholder={props.user.birthdate} type='date'/>
-                        <Field name='bio' component={CustomField} label='bio' placeholder={props.user.bio} type='text'/>
-                        <Field name='github_link' component={CustomField} label='github_link' placeholder={props.user.github_link} type='url'/>
-                        <Field name='linkedin_link' component={CustomField} label='linkedin_link' placeholder={props.user.linkedin_link} type='url'/>
-                        <Field name='other_website_links' component={CustomField} label='other_website_links' placeholder={props.user.other_website_links} type='url'/>
-                        <Field name='contact_links' component={CustomField} label='contact_links' placeholder={props.user.contact_links} type='url'/>
+                            <Field name='firstname' component={CustomField} label='firstname' placeholder={props.user.firstname} type='text'/>
+                            <Field name='lastname' component={CustomField} label='lastname' placeholder={props.user.lastname} type='text'/>
+                            <Field name='username' component={CustomField} label='username' placeholder={props.user.username} type='text'/>
+                            <Field name='email' component={CustomField} label='email' placeholder={props.user.email} type='email'/>
+                            <Field name='phone_number' component={CustomField} label='phone_number' placeholder={props.user.phone_number} type='tel'/>
+                            <Field name='birthdate' component={CustomField} label='birthdate' placeholder={props.user.birthdate} type='date'/>
+                            <Field name='bio' component={CustomField} label='bio' placeholder={props.user.bio} type='text'/>
+                            <Field name='github_link' component={CustomField} label='github_link' placeholder={props.user.github_link} type='url'/>
+                            <Field name='linkedin_link' component={CustomField} label='linkedin_link' placeholder={props.user.linkedin_link} type='url'/>
+                            <Field name='other_website_links' component={CustomField} label='other_website_links' placeholder={props.user.other_website_links} type='url'/>
+                            <Field name='contact_links' component={CustomField} label='contact_links' placeholder={props.user.contact_links} type='url'/>
                         <button>UPDATE</button>
                     </form>
                 </div>
                 <div>
                 <div>
-                    <button onClick={() => setEditing(false)}>Exit Editing</button>
+                    <button onClick={() =>{setEditing(false); props.getUserAction()} }>Exit Editing</button>
                 </div>
                 </div>
             </div>
@@ -84,5 +85,5 @@ export default compose(
     reduxForm({
         form: 'profilePage'
     }),
-    connect(mapPropsToState)
+    connect(mapPropsToState,{getUserAction})
 )(ProfilePage)
